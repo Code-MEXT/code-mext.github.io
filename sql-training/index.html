@@ -112,11 +112,12 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Get all links in the document
             const links = document.querySelectorAll('a');
+            const allowed_paths = ['/day1/', '/day2/', '/alternative_examples/'];
 
             links.forEach(link => {
                 link.addEventListener('click', function (e) {
                     // Check if the link is not from day1
-                    if (!this.href.includes('/day1/')) {
+                    if (!allowed_paths.some(path => this.href.includes(path))) {
                         e.preventDefault(); // Prevent the default link behavior
                         alert('This content is currently being uploaded. Please check back later!');
                     }
